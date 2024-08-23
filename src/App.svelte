@@ -1,11 +1,10 @@
 <!-- Import components to use it -->
- <script>
-  import TodoPages from "./pages/TodoPages.svelte";
+<script>
+  import TodoPage from "./pages/TodoPage.svelte";
   import Header from "./components/layout/Header.svelte";
- </script>
+</script>
 
-
- <div class="App">
-  <TodoPages />
+<div class="App">
   <Header />
- </div>
+  <TodoPage />
+</div>
