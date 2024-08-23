@@ -1,16 +1,12 @@
 <script>
   import Todo from "./Todo.svelte";
   // To use prompt in the component use export
-  export let todos = []
+  export let todos = [];
 </script>
 
 <div class="todos-list">
-  <Todo />
-  <Todo />
-  <Todo />
-  <Todo />
-  <Todo />
-  <Todo />
-  <Todo />
-  <Todo />
+  <!-- Loops in Svelte use: {#each  as } {/each} -->
+  {#each todos as todo (todo.id)}
+    <Todo {todo} />
+  {/each}
 </div>
