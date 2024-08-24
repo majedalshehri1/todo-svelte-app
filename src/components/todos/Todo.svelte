@@ -1,12 +1,9 @@
 <script>
   import { CircleIcon, EditIcon, Trash2Icon } from "svelte-feather-icons";
   import { createEventDispatcher } from "svelte";
-  export let todo;
-
   const dispatch = createEventDispatcher();
-  const handelEdit = () => {
-    
-  };
+  export let todo;
+  const handelEdit = () => {};
   const handelDelete = () => {
     dispatch("deleteTodo", todo.id);
   };

@@ -9,6 +9,24 @@
     { id: "4", title: "مذاكرة UX", done: true },
   ];
 
+  const addTodo = (e) => {
+    const title = e.detail;
+    const id = new Date().getTime();
+    // each ID is to unique number
+    // console.log(id);
+
+    // ( ...todos ) that is mean the last version in the list todos
+    todos = [
+      {
+        title,
+        id,
+        done: false,
+      },
+      ...todos,
+    ];
+    todos.push();
+  };
+
   const deleteTodo = (e) => {
     const id = e.detail;
     todos = todos.filter((t) => t.id !== id);
@@ -18,7 +36,7 @@
 <main>
   <div class="container">
     <div class="todos">
-      <TodosForm />
+      <TodosForm on:addTodo={addTodo} />
       <Todos {todos} on:deleteTodo={deleteTodo} />
     </div>
   </div>
