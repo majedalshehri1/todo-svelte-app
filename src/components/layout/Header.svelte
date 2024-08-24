@@ -1,7 +1,13 @@
+<script>
+  import { Router, Link } from "svelte-navigator";
+</script>
+
 <header>
   <h1>قائمة المهام</h1>
   <div>
-    <a href="#">Home</a>
-    <a href="#">About</a>
+    <Router>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+    </Router>
   </div>
-</header> 
+</header>

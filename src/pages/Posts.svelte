@@ -1,1 +1,6 @@
-<h1>Post</h1>
+<script>
+  import { useParams } from "svelte-navigator";
+  const params = useParams();
+</script>
+
+<h1>Post {$params.id}</h1>
