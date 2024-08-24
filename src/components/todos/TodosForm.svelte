@@ -2,14 +2,27 @@
   import { CircleIcon } from "svelte-feather-icons";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
+
+  export let activeEditTodo;
+
   let value = "";
+  
   const handelAddTodo = () => {
     if (!value.trim()) {
       //trim() is method to check for empty string
       return;
     }
     dispatch("addTodo", value.trim());
+    value = ""; // ( value = ""; ) after adding the task will be removed from the queue
   };
+
+  const editChange = () => {
+    if (activeEditTodo){
+      value = activeEditTodo.title;
+    }
+  }
+
+  $: activeEditTodo, editChange()
 </script>
 
 <!-- TodosFrom Structure -->

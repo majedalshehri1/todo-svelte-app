@@ -3,7 +3,10 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let todo;
-  const handelEdit = () => {};
+  export let activeEditTodo;
+  const handelEdit = () => {
+    dispatch("editTodo", todo);
+  };
   const handelDelete = () => {
     dispatch("deleteTodo", todo.id);
   };
@@ -15,12 +18,14 @@
     <CircleIcon />
   </div>
   <div class="todos-todo_text">{todo.title}</div>
-  <div class="todos-todo_cta">
-    <div class="todos-todo_cta-edit" on:click={handelEdit}>
-      <EditIcon size="20" />
+  {#if !activeEditTodo}
+    <div class="todos-todo_cta">
+      <div class="todos-todo_cta-edit" on:click={handelEdit}>
+        <EditIcon size="20" />
+      </div>
+      <div class="todos-todo_cta-delete" on:click={handelDelete}>
+        <Trash2Icon size="20" />
+      </div>
     </div>
-    <div class="todos-todo_cta-delete" on:click={handelDelete}>
-      <Trash2Icon size="20" />
-    </div>
-  </div>
+  {/if}
 </div>

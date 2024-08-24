@@ -9,35 +9,55 @@
     { id: "4", title: "مذاكرة UX", done: true },
   ];
 
+  let activeEditTodo = null;
+
   const addTodo = (e) => {
     const title = e.detail;
     const id = new Date().getTime();
     // each ID is to unique number
     // console.log(id);
-
-    // ( ...todos ) that is mean the last version in the list todos
-    todos = [
-      {
-        title,
-        id,
-        done: false,
-      },
-      ...todos,
-    ];
-    todos.push();
+    if (!activeEditTodo) {
+      todos = [
+        {
+          title,
+          id,
+          done: false,
+        },
+        ...todos,
+        // ( ...todos ) that is mean the last version in the list todos
+      ];
+    } else {
+      // Edit Mode
+      todos = todos.map((t) => {
+        if (activeEditTodo.id === t.id) {
+          t.title = title;
+        }
+        return t
+      });
+    }
+    activeEditTodo = null
   };
 
   const deleteTodo = (e) => {
     const id = e.detail;
     todos = todos.filter((t) => t.id !== id);
   };
+
+  const editTodo = (e) => {
+    activeEditTodo = e.detail;
+  };
 </script>
 
 <main>
   <div class="container">
     <div class="todos">
-      <TodosForm on:addTodo={addTodo} />
-      <Todos {todos} on:deleteTodo={deleteTodo} />
+      <TodosForm {activeEditTodo} on:addTodo={addTodo} />
+      <Todos
+        {todos}
+        {activeEditTodo}
+        on:deleteTodo={deleteTodo}
+        on:editTodo={editTodo}
+      />
     </div>
   </div>
 </main>
