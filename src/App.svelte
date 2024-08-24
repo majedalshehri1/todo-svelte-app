@@ -1,6 +1,7 @@
 <!-- Import components to use it -->
 <script>
   // Import library navigator to bulid router
+  // @ts-ignore
   import { Router, Route } from "svelte-navigator";
   import TodoPage from "./pages/TodoPage.svelte";
   import Header from "./components/layout/Header.svelte";

@@ -3,10 +3,10 @@
   import Todos from "../components/todos/Todos.svelte";
 
   let todos = [
-    { id: "1", title: "اجتماع لتخطيط مشروع التخرج", done: false },
-    { id: "2", title: "تاسكات svelte", done: true },
-    { id: "3", title: "اختبار قصير", done: false },
-    { id: "4", title: "مذاكرة UX", done: true },
+    { id: "1", title: "المهمه الاولى", done: false },
+    { id: "2", title: " المهمه الثانية", done: true },
+    { id: "3", title: "المهمه الثالثة ", done: false },
+    { id: "4", title: "المهمه الرابعة", done: true },
   ];
 
   let activeEditTodo = null;

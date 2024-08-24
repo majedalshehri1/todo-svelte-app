@@ -12,7 +12,6 @@
   {#each activeTodos as todo (todo.id)}
     <Todo {todo} {activeEditTodo} on:deleteTodo on:editTodo on:toggelTodo />
   {/each}
-
   {#if todos.length === 0}
     <h3 class="no-todos">لايوجد مهام حالياً ...</h3>
   {/if}

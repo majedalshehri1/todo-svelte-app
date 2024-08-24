@@ -1,6 +1,8 @@
 <script>
   import { CircleIcon, CheckCircleIcon, EditIcon, Trash2Icon } from "svelte-feather-icons";
   import { createEventDispatcher } from "svelte";
+  // Import Animation with svelte
+  import {fly} from "svelte/transition"
   const dispatch = createEventDispatcher();
   export let todo;
   export let activeEditTodo;
@@ -15,8 +17,9 @@
   }
 </script>
 
-<div class="todos-todo" class:done={todo.done}>
+<div class="todos-todo" class:done={todo.done} in:fly={{x:100, duration:400}} out:fly={{x:-100, duration:400}}>
   <!-- 3 type into the div todo -->
+   
   <div class="todos-todo_icon" on:click={handelToggelTodo}>
     {#if todo.done}
     <CheckCircleIcon/>
