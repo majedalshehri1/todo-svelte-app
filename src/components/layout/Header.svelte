@@ -1,3 +1,7 @@
 <header>
   <h1>قائمة المهام</h1>
-</header>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+  </div>
+</header> 

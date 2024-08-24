@@ -22,6 +22,7 @@
       todos = [
         {
           title,
+          // @ts-ignore
           id,
           done: false,
         },
@@ -71,7 +72,12 @@
 <main>
   <div class="container">
     <div class="todos">
-      <TodosForm   {activeEditTodo} {isFilter} on:addTodo={addTodo} on:filter= {filter} />
+      <TodosForm
+        {activeEditTodo}
+        {isFilter}
+        on:addTodo={addTodo}
+        on:filter={filter}
+      />
       <Todos
         todos={allTodos}
         {activeEditTodo}
