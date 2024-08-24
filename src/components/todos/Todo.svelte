@@ -1,5 +1,5 @@
 <script>
-  import { CircleIcon, EditIcon, Trash2Icon } from "svelte-feather-icons";
+  import { CircleIcon, CheckCircleIcon, EditIcon, Trash2Icon } from "svelte-feather-icons";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let todo;
@@ -18,7 +18,11 @@
 <div class="todos-todo" class:done={todo.done}>
   <!-- 3 type into the div todo -->
   <div class="todos-todo_icon" on:click={handelToggelTodo}>
-    <CircleIcon />
+    {#if todo.done}
+    <CheckCircleIcon/>
+      {:else}
+      <CircleIcon />
+    {/if}
   </div>
   <div class="todos-todo_text">{todo.title}</div>
   {#if !activeEditTodo}
