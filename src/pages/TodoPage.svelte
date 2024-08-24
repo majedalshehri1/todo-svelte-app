@@ -11,6 +11,8 @@
 
   let activeEditTodo = null;
 
+  let isFilter = false;
+
   const addTodo = (e) => {
     const title = e.detail;
     const id = new Date().getTime();
@@ -32,10 +34,10 @@
         if (activeEditTodo.id === t.id) {
           t.title = title;
         }
-        return t
+        return t;
       });
     }
-    activeEditTodo = null
+    activeEditTodo = null;
   };
 
   const deleteTodo = (e) => {
@@ -46,17 +48,36 @@
   const editTodo = (e) => {
     activeEditTodo = e.detail;
   };
+  const toggelTodo = (e) => {
+    if (activeEditTodo) {
+      return;
+    }
+    const id = e.detail;
+    todos = todos.map((t) => {
+      if (t.id === id) {
+        t.done = !t.done;
+      }
+      return t;
+    });
+  };
+
+  const filter = () => {
+    isFilter = !isFilter;
+  };
+
+  $: allTodos = isFilter ? todos.filter((t) => !t.done) : todos;
 </script>
 
 <main>
   <div class="container">
     <div class="todos">
-      <TodosForm {activeEditTodo} on:addTodo={addTodo} />
+      <TodosForm   {activeEditTodo} {isFilter} on:addTodo={addTodo} on:filter= {filter} />
       <Todos
-        {todos}
+        todos={allTodos}
         {activeEditTodo}
         on:deleteTodo={deleteTodo}
         on:editTodo={editTodo}
+        on:toggelTodo={toggelTodo}
       />
     </div>
   </div>

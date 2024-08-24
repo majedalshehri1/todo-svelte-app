@@ -10,6 +10,6 @@
 <div class="todos-list">
   <!-- Loops in Svelte use: {#each  as } {/each} -->
   {#each activeTodos as todo (todo.id)}
-    <Todo {todo} {activeEditTodo} on:deleteTodo on:editTodo />
+    <Todo {todo} {activeEditTodo} on:deleteTodo on:editTodo on:toggelTodo />
   {/each}
 </div>

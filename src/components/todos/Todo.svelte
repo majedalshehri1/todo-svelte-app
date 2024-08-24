@@ -10,11 +10,14 @@
   const handelDelete = () => {
     dispatch("deleteTodo", todo.id);
   };
+  const handelToggelTodo = () => {
+    dispatch("toggelTodo", todo.id);
+  }
 </script>
 
 <div class="todos-todo" class:done={todo.done}>
   <!-- 3 type into the div todo -->
-  <div class="todos-todo_icon">
+  <div class="todos-todo_icon" on:click={handelToggelTodo}>
     <CircleIcon />
   </div>
   <div class="todos-todo_text">{todo.title}</div>
