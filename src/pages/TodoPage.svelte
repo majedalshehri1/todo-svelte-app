@@ -2,12 +2,7 @@
   import TodosForm from "../components/todos/TodosForm.svelte";
   import Todos from "../components/todos/Todos.svelte";
 
-  let todos = [
-    { id: "1", title: "المهمه الاولى", done: false },
-    { id: "2", title: " المهمه الثانية", done: true },
-    { id: "3", title: "المهمه الثالثة ", done: false },
-    { id: "4", title: "المهمه الرابعة", done: true },
-  ];
+  let todos = [];
 
   let activeEditTodo = null;
 
